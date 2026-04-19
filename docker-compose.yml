@@ -1,0 +1,22 @@
+# docker-compose.yml — semcodec CPU-only deterministic decoder
+#
+# Usage:
+#   docker compose run --rm semcodec decode /data/photo.sem -o /data/output.png
+#   docker compose run --rm semcodec info /data/photo.sem
+#
+# Place .sem files in ./data/ (mounted as /data inside the container).
+# No GPU required. CPU-only for cross-platform determinism.
+
+services:
+  semcodec:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: semcodec:latest
+    volumes:
+      - ./data:/data
+    environment:
+      - SEMCODEC_DEVICE=cpu
+      - CUBLAS_WORKSPACE_CONFIG=:4096:8
+      - PYTHONHASHSEED=0
+    command: ["--help"]

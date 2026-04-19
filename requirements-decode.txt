@@ -1,0 +1,18 @@
+# requirements-decode.txt
+# Pinned CPU-only decode environment for deterministic semcodec output.
+# Proven: CPU-CPU decodes produce identical SHA-256 on alon (x86_64, Ubuntu 24.04).
+#
+# Install with: pip install --no-cache-dir -r requirements-decode.txt
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0+cpu
+diffusers==0.37.1
+transformers==4.51.3
+accelerate==1.6.0
+safetensors==0.5.3
+Pillow==11.2.1
+numpy==2.2.4
+huggingface-hub==0.30.2
+tokenizers==0.21.1
+regex==2024.11.6
+filelock==3.18.0

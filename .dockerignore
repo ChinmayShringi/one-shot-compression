@@ -1,0 +1,6 @@
+# Ignore everything except what the Dockerfile needs
+*
+
+# Include only the codec and its requirements
+!semcodec.py
+!requirements-decode.txt

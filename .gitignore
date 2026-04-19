@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+
+# Virtual envs
+coolchic_venv/
+venv/
+.venv/
+env/
+
+# Large data / artifacts
+checkpoints/
+output/
+data/
+v3/
+Cool-Chic/
+libjxl/
+coolchic_workdir/
+coolchic_workdir2/
+
+# Logs
+*.log
+
+# Media / binary artifacts
+*.mp4
+*.png
+*.jpg
+*.jpeg
+
+# Codec intermediate outputs
+*.apex
+*.creg
+*.gen3
+*.genc
+*.hash
+*.hfc
+*.jxlw
+*.matree
+*.mfc
+*.nenc
+*.prism4
+*.rmt3
+*.sens
+*.sir2
+*.sirn
+*.ne2c
+*.ne2c.model
+*.ultm
+*.decoded.png
+
+# Session buffers
+.remember/
+
+# OS
+.DS_Store
