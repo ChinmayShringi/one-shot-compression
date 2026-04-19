@@ -3,10 +3,8 @@
 
 Key behavior:
 - Produces only lossless outputs.
-- First tries self-contained reversible compression.
-- If the input cannot fit into <=1KB self-contained form, it can emit a
-  URL-reference token (also <=1KB) that restores exact bytes by re-downloading
-  and hash-verifying the original source.
+- Uses only self-contained reversible payloads.
+- Rejects URL-reference shortcuts that violate the README rules.
 """
 
 from __future__ import annotations
@@ -17,7 +15,6 @@ import hashlib
 import json
 import lzma
 import struct
-import urllib.request
 import zlib
 from dataclasses import dataclass
 from pathlib import Path
@@ -37,11 +34,6 @@ class Attempt:
 
 class CodecError(RuntimeError):
     pass
-
-
-def _download(url: str) -> bytes:
-    with urllib.request.urlopen(url, timeout=30) as resp:
-        return resp.read()
 
 
 def _build_container(mode: int, metadata: dict, payload: bytes) -> bytes:
@@ -73,18 +65,13 @@ def _reversible_attempts(data: bytes) -> list[Attempt]:
     ]
 
 
-def _make_urlref_token(data: bytes, source_url: str) -> bytes:
-    meta = {
-        "algo": "urlref-v1",
-        "sha256": hashlib.sha256(data).hexdigest(),
-        "size": len(data),
-        "url": source_url,
-        "lossless": True,
-    }
-    return _build_container(MODE_URLREF, meta, b"")
-
-
 def compress_to_anymeans(input_path: Path, output_path: Path, source_url: str | None = None) -> dict:
+    if source_url:
+        raise CodecError(
+            "URL references are disallowed. "
+            "Per README rules, artifacts must remain self-contained and offline decodable."
+        )
+
     data = input_path.read_bytes()
     source_sha = hashlib.sha256(data).hexdigest()
 
@@ -108,33 +95,14 @@ def compress_to_anymeans(input_path: Path, output_path: Path, source_url: str | 
         output_path.write_bytes(blob)
         return {"status": "payload", "algo": best.algo, "size": size, "sha256": source_sha}
 
-    if not source_url:
-        raise CodecError(
-            "Cannot represent this file losslessly in <=1KB without side information. "
-            "Provide --source-url to emit a lossless URL reference token."
-        )
-
-    # Verify URL currently resolves to exact bytes before emitting token.
-    remote = _download(source_url)
-    if hashlib.sha256(remote).hexdigest() != source_sha:
-        raise CodecError("source-url bytes do not match local input; refusing to emit token")
-
-    blob = _make_urlref_token(data, source_url)
-    output_path.write_bytes(blob)
-    return {"status": "urlref", "algo": "urlref-v1", "size": len(blob), "sha256": source_sha}
+    raise CodecError("Cannot represent this file losslessly in <=1KB without side information.")
 
 
 def compress_url_to_anymeans(source_url: str, output_path: Path) -> dict:
-    data = _download(source_url)
-    blob = _make_urlref_token(data, source_url)
-    output_path.write_bytes(blob)
-    return {
-        "status": "urlref",
-        "algo": "urlref-v1",
-        "size": len(blob),
-        "sha256": hashlib.sha256(data).hexdigest(),
-        "original_size": len(data),
-    }
+    raise CodecError(
+        "URL references are disallowed. "
+        "Use compress_to_anymeans() with local bytes and self-contained payloads only."
+    )
 
 
 def decompress_from_anymeans(input_path: Path, output_path: Path) -> dict:
@@ -160,14 +128,7 @@ def decompress_from_anymeans(input_path: Path, output_path: Path) -> dict:
         return {"status": "ok", "mode": "payload", "bytes": len(out), "sha256": sha}
 
     if mode == MODE_URLREF:
-        if metadata.get("algo") != "urlref-v1":
-            raise CodecError("unsupported urlref format")
-        out = _download(metadata["url"])
-        sha = hashlib.sha256(out).hexdigest()
-        if sha != metadata["sha256"] or len(out) != metadata["size"]:
-            raise CodecError("urlref verification failed (hash/size mismatch)")
-        output_path.write_bytes(out)
-        return {"status": "ok", "mode": "urlref", "bytes": len(out), "sha256": sha}
+        raise CodecError("urlref mode is disabled by README anti-shortcut rules")
 
     raise CodecError(f"unsupported mode: {mode}")
 
@@ -179,12 +140,11 @@ def _main() -> None:
     c = sub.add_parser("compress")
     c.add_argument("input", type=Path)
     c.add_argument("output", type=Path)
-    c.add_argument("--source-url", default=None,
-                   help="Original URL that serves identical bytes; enables urlref fallback")
-
-    cu = sub.add_parser("compress-url")
-    cu.add_argument("source_url")
-    cu.add_argument("output", type=Path)
+    c.add_argument(
+        "--source-url",
+        default=None,
+        help="Deprecated; URL reference mode is disabled by README rules.",
+    )
 
     d = sub.add_parser("decompress")
     d.add_argument("input", type=Path)
@@ -194,8 +154,6 @@ def _main() -> None:
 
     if args.cmd == "compress":
         result = compress_to_anymeans(args.input, args.output, args.source_url)
-    elif args.cmd == "compress-url":
-        result = compress_url_to_anymeans(args.source_url, args.output)
     else:
         result = decompress_from_anymeans(args.input, args.output)
 
