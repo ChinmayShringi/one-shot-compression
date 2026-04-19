@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import http.server
+import json
 import os
+import struct
 import socketserver
 import threading
 from pathlib import Path
@@ -40,13 +42,15 @@ def test_small_payload_roundtrip(tmp_path: Path) -> None:
     assert out.read_bytes() == src.read_bytes()
 
 
-def test_large_payload_requires_source_url(tmp_path: Path) -> None:
+def test_large_payload_requires_side_information(tmp_path: Path) -> None:
     src = tmp_path / "large.bin"
     src.write_bytes(os.urandom(20000))
 
     packed = tmp_path / "large.amc"
     with pytest.raises(CodecError):
         compress_to_anymeans(src, packed)
+    with pytest.raises(CodecError):
+        compress_to_anymeans(src, packed, source_url="https://example.com/input.bin")
 
 
 def test_urlref_roundtrip_from_local_http(tmp_path: Path) -> None:
@@ -57,15 +61,19 @@ def test_urlref_roundtrip_from_local_http(tmp_path: Path) -> None:
     try:
         url = f"http://127.0.0.1:{port}/{src.name}"
         packed = tmp_path / "remote.amc"
-
-        res = compress_url_to_anymeans(url, packed)
-        assert res["status"] == "urlref"
-        assert packed.stat().st_size <= MAX_BYTES
-
-        out = tmp_path / "remote.out"
-        dec = decompress_from_anymeans(packed, out)
-        assert dec["status"] == "ok"
-        assert out.read_bytes() == src.read_bytes()
+        with pytest.raises(CodecError):
+            compress_url_to_anymeans(url, packed)
     finally:
         httpd.shutdown()
         thread.join(timeout=2)
+
+
+def test_decode_rejects_urlref_mode(tmp_path: Path) -> None:
+    metadata = {"algo": "urlref-v1", "sha256": "0" * 64, "size": 1, "url": "https://example.com/x"}
+    meta_bytes = json.dumps(metadata, separators=(",", ":")).encode("utf-8")
+    blob = b"AMC1" + bytes([1]) + struct.pack(">H", len(meta_bytes)) + meta_bytes
+    packed = tmp_path / "legacy_urlref.amc"
+    packed.write_bytes(blob)
+
+    with pytest.raises(CodecError):
+        decompress_from_anymeans(packed, tmp_path / "out.bin")
