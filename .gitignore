@@ -14,7 +14,6 @@ env/
 
 # Large data / artifacts
 checkpoints/
-output/
 data/
 v3/
 Cool-Chic/
@@ -27,7 +26,10 @@ coolchic_workdir2/
 
 # Media / binary artifacts
 *.mp4
+*.mp3
+!/*.mp3
 *.png
+!/*.png
 *.jpg
 *.jpeg
 
