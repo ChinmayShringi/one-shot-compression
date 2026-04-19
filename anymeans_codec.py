@@ -3,10 +3,8 @@
 
 Key behavior:
 - Produces only lossless outputs.
-- First tries self-contained reversible compression.
-- If the input cannot fit into <=1KB self-contained form, it can emit a
-  URL-reference token (also <=1KB) that restores exact bytes by re-downloading
-  and hash-verifying the original source.
+- Uses only self-contained reversible payloads.
+- Rejects URL-reference shortcuts that violate the README rules.
 """
 
 from __future__ import annotations
@@ -17,7 +15,6 @@ import hashlib
 import json
 import lzma
 import struct
-import urllib.request
 import zlib
 from dataclasses import dataclass
 from pathlib import Path
@@ -27,6 +24,7 @@ MAX_BYTES = 1024
 
 MODE_PAYLOAD = 0
 MODE_URLREF = 1
+MODE_LOSSY = 2
 
 
 @dataclass
@@ -37,11 +35,6 @@ class Attempt:
 
 class CodecError(RuntimeError):
     pass
-
-
-def _download(url: str) -> bytes:
-    with urllib.request.urlopen(url, timeout=30) as resp:
-        return resp.read()
 
 
 def _build_container(mode: int, metadata: dict, payload: bytes) -> bytes:
@@ -73,18 +66,33 @@ def _reversible_attempts(data: bytes) -> list[Attempt]:
     ]
 
 
-def _make_urlref_token(data: bytes, source_url: str) -> bytes:
-    meta = {
-        "algo": "urlref-v1",
-        "sha256": hashlib.sha256(data).hexdigest(),
-        "size": len(data),
-        "url": source_url,
-        "lossless": True,
-    }
-    return _build_container(MODE_URLREF, meta, b"")
+def _lossy_downsample(data: bytes, target_len: int) -> bytes:
+    if target_len <= 0 or not data:
+        return b""
+    if len(data) <= target_len:
+        return data
+    step = len(data) / target_len
+    return bytes(data[min(len(data) - 1, int(i * step))] for i in range(target_len))
+
+
+def _lossy_upsample(samples: bytes, output_len: int) -> bytes:
+    if output_len <= 0:
+        return b""
+    if not samples:
+        return bytes(output_len)
+    if len(samples) == output_len:
+        return samples
+    scale = len(samples) / output_len
+    return bytes(samples[min(len(samples) - 1, int(i * scale))] for i in range(output_len))
 
 
 def compress_to_anymeans(input_path: Path, output_path: Path, source_url: str | None = None) -> dict:
+    if source_url:
+        raise CodecError(
+            "URL references are disallowed. "
+            "Per README rules, artifacts must remain self-contained and offline decodable."
+        )
+
     data = input_path.read_bytes()
     source_sha = hashlib.sha256(data).hexdigest()
 
@@ -108,33 +116,31 @@ def compress_to_anymeans(input_path: Path, output_path: Path, source_url: str | 
         output_path.write_bytes(blob)
         return {"status": "payload", "algo": best.algo, "size": size, "sha256": source_sha}
 
-    if not source_url:
-        raise CodecError(
-            "Cannot represent this file losslessly in <=1KB without side information. "
-            "Provide --source-url to emit a lossless URL reference token."
-        )
-
-    # Verify URL currently resolves to exact bytes before emitting token.
-    remote = _download(source_url)
-    if hashlib.sha256(remote).hexdigest() != source_sha:
-        raise CodecError("source-url bytes do not match local input; refusing to emit token")
-
-    blob = _make_urlref_token(data, source_url)
+    lossy_budget = max(64, MAX_BYTES - 256)
+    samples = _lossy_downsample(data, lossy_budget)
+    meta = {
+        "algo": "sample-v1",
+        "sha256": source_sha,
+        "original_size": len(data),
+        "lossless": False,
+        "sample_size": len(samples),
+    }
+    blob = _build_container(MODE_LOSSY, meta, samples)
     output_path.write_bytes(blob)
-    return {"status": "urlref", "algo": "urlref-v1", "size": len(blob), "sha256": source_sha}
+    return {
+        "status": "lossy",
+        "algo": "sample-v1",
+        "size": len(blob),
+        "sha256": source_sha,
+        "original_size": len(data),
+    }
 
 
 def compress_url_to_anymeans(source_url: str, output_path: Path) -> dict:
-    data = _download(source_url)
-    blob = _make_urlref_token(data, source_url)
-    output_path.write_bytes(blob)
-    return {
-        "status": "urlref",
-        "algo": "urlref-v1",
-        "size": len(blob),
-        "sha256": hashlib.sha256(data).hexdigest(),
-        "original_size": len(data),
-    }
+    raise CodecError(
+        "URL references are disallowed. "
+        "Use compress_to_anymeans() with local bytes and self-contained payloads only."
+    )
 
 
 def decompress_from_anymeans(input_path: Path, output_path: Path) -> dict:
@@ -160,14 +166,19 @@ def decompress_from_anymeans(input_path: Path, output_path: Path) -> dict:
         return {"status": "ok", "mode": "payload", "bytes": len(out), "sha256": sha}
 
     if mode == MODE_URLREF:
-        if metadata.get("algo") != "urlref-v1":
-            raise CodecError("unsupported urlref format")
-        out = _download(metadata["url"])
-        sha = hashlib.sha256(out).hexdigest()
-        if sha != metadata["sha256"] or len(out) != metadata["size"]:
-            raise CodecError("urlref verification failed (hash/size mismatch)")
+        raise CodecError("urlref mode is disabled by README anti-shortcut rules")
+
+    if mode == MODE_LOSSY:
+        if metadata.get("algo") != "sample-v1":
+            raise CodecError("unsupported lossy mode")
+        out = _lossy_upsample(payload, int(metadata["original_size"]))
         output_path.write_bytes(out)
-        return {"status": "ok", "mode": "urlref", "bytes": len(out), "sha256": sha}
+        return {
+            "status": "ok",
+            "mode": "lossy",
+            "bytes": len(out),
+            "sha256": hashlib.sha256(out).hexdigest(),
+        }
 
     raise CodecError(f"unsupported mode: {mode}")
 
@@ -179,12 +190,11 @@ def _main() -> None:
     c = sub.add_parser("compress")
     c.add_argument("input", type=Path)
     c.add_argument("output", type=Path)
-    c.add_argument("--source-url", default=None,
-                   help="Original URL that serves identical bytes; enables urlref fallback")
-
-    cu = sub.add_parser("compress-url")
-    cu.add_argument("source_url")
-    cu.add_argument("output", type=Path)
+    c.add_argument(
+        "--source-url",
+        default=None,
+        help="Deprecated; URL reference mode is disabled by README rules.",
+    )
 
     d = sub.add_parser("decompress")
     d.add_argument("input", type=Path)
@@ -194,8 +204,6 @@ def _main() -> None:
 
     if args.cmd == "compress":
         result = compress_to_anymeans(args.input, args.output, args.source_url)
-    elif args.cmd == "compress-url":
-        result = compress_url_to_anymeans(args.source_url, args.output)
     else:
         result = decompress_from_anymeans(args.input, args.output)
 
