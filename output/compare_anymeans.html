@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>img.png vs anymeans decoded</title>
+<style>
+  body { margin: 0; background: #111; color: #eee; font-family: system-ui, sans-serif; }
+  header { padding: 12px 16px; border-bottom: 1px solid #333; }
+  .row { display: flex; gap: 8px; padding: 8px; }
+  .col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+  .col img { max-width: 100%; height: auto; border: 1px solid #333; }
+  .label { padding: 6px 0; font-size: 13px; color: #9ad; }
+  code { color: #cfc; }
+</style>
+</head>
+<body>
+<header>
+  <div>SHA-256: <code>3230eff7b305aa0d772152ebc2219160f599d21a6cc1cee632543f342dce5c46</code> (identical)</div>
+  <div>Both files are 2,764,155 bytes. The "decoded" file was re-downloaded via the urlref token, not reconstructed from compressed payload.</div>
+</header>
+<div class="row">
+  <div class="col">
+    <div class="label">img.png (original)</div>
+    <img src="../img.png">
+  </div>
+  <div class="col">
+    <div class="label">output/img.anymeans.decoded.png</div>
+    <img src="img.anymeans.decoded.png">
+  </div>
+</div>
+</body>
+</html>
