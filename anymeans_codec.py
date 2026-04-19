@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""ANYMEANS codec (lossless-only, <=1KB artifact target).
+"""ANYMEANS codec (<=1KB artifact target).
 
 Key behavior:
-- Produces only lossless outputs.
-- Uses only self-contained reversible payloads.
+- Tries lossless self-contained outputs first.
+- Falls back to self-contained lossy image compression when needed.
 - Rejects URL-reference shortcuts that violate the README rules.
 """
 
@@ -16,8 +16,10 @@ import json
 import lzma
 import struct
 import zlib
+from io import BytesIO
 from dataclasses import dataclass
 from pathlib import Path
+from PIL import Image, UnidentifiedImageError
 
 MAGIC = b"AMC1"
 MAX_BYTES = 1024
@@ -66,24 +68,36 @@ def _reversible_attempts(data: bytes) -> list[Attempt]:
     ]
 
 
-def _lossy_downsample(data: bytes, target_len: int) -> bytes:
-    if target_len <= 0 or not data:
-        return b""
-    if len(data) <= target_len:
-        return data
-    step = len(data) / target_len
-    return bytes(data[min(len(data) - 1, int(i * step))] for i in range(target_len))
+def _encode_lossy_image(data: bytes, source_sha: str) -> tuple[bytes, dict]:
+    try:
+        with Image.open(BytesIO(data)) as img:
+            rgb = img.convert("RGB")
+            src_w, src_h = rgb.size
+    except (UnidentifiedImageError, OSError) as exc:
+        raise CodecError("input is not a decodable image for lossy fallback") from exc
 
-
-def _lossy_upsample(samples: bytes, output_len: int) -> bytes:
-    if output_len <= 0:
-        return b""
-    if not samples:
-        return bytes(output_len)
-    if len(samples) == output_len:
-        return samples
-    scale = len(samples) / output_len
-    return bytes(samples[min(len(samples) - 1, int(i * scale))] for i in range(output_len))
+    for max_side in (96, 80, 64, 56, 48, 40, 32, 24, 16):
+        for quality in (70, 55, 40, 30, 20):
+            candidate = rgb.copy()
+            candidate.thumbnail((max_side, max_side), Image.Resampling.LANCZOS)
+            out = BytesIO()
+            candidate.save(out, format="JPEG", quality=quality, optimize=True, progressive=False)
+            payload = out.getvalue()
+            meta = {
+                "algo": "image-jpeg-v1",
+                "lossless": False,
+                "original_sha256": source_sha,
+                "original_size": len(data),
+                "source_size": [src_w, src_h],
+                "lossy_size": list(candidate.size),
+                "quality": quality,
+            }
+            try:
+                blob = _build_container(MODE_LOSSY, meta, payload)
+                return blob, meta
+            except CodecError:
+                continue
+    raise CodecError("unable to fit lossy image payload into <=1KB")
 
 
 def compress_to_anymeans(input_path: Path, output_path: Path, source_url: str | None = None) -> dict:
@@ -116,23 +130,15 @@ def compress_to_anymeans(input_path: Path, output_path: Path, source_url: str | 
         output_path.write_bytes(blob)
         return {"status": "payload", "algo": best.algo, "size": size, "sha256": source_sha}
 
-    lossy_budget = max(64, MAX_BYTES - 256)
-    samples = _lossy_downsample(data, lossy_budget)
-    meta = {
-        "algo": "sample-v1",
-        "sha256": source_sha,
-        "original_size": len(data),
-        "lossless": False,
-        "sample_size": len(samples),
-    }
-    blob = _build_container(MODE_LOSSY, meta, samples)
+    blob, meta = _encode_lossy_image(data, source_sha)
     output_path.write_bytes(blob)
     return {
         "status": "lossy",
-        "algo": "sample-v1",
+        "algo": meta["algo"],
         "size": len(blob),
-        "sha256": source_sha,
+        "original_sha256": source_sha,
         "original_size": len(data),
+        "decoded_size": meta["lossy_size"],
     }
 
 
@@ -169,15 +175,14 @@ def decompress_from_anymeans(input_path: Path, output_path: Path) -> dict:
         raise CodecError("urlref mode is disabled by README anti-shortcut rules")
 
     if mode == MODE_LOSSY:
-        if metadata.get("algo") != "sample-v1":
+        if metadata.get("algo") != "image-jpeg-v1":
             raise CodecError("unsupported lossy mode")
-        out = _lossy_upsample(payload, int(metadata["original_size"]))
-        output_path.write_bytes(out)
+        output_path.write_bytes(payload)
         return {
             "status": "ok",
             "mode": "lossy",
-            "bytes": len(out),
-            "sha256": hashlib.sha256(out).hexdigest(),
+            "bytes": len(payload),
+            "sha256": hashlib.sha256(payload).hexdigest(),
         }
 
     raise CodecError(f"unsupported mode: {mode}")

@@ -1,29 +1,22 @@
 from __future__ import annotations
 
-import http.server
 import json
 import os
 import struct
-import socketserver
-import threading
+from io import BytesIO
 from pathlib import Path
 
 import pytest
+from PIL import Image
 
 from anymeans_codec import MAX_BYTES, CodecError, compress_to_anymeans, compress_url_to_anymeans, decompress_from_anymeans
 
 
-class _SilentHandler(http.server.SimpleHTTPRequestHandler):
-    def log_message(self, format, *args):  # pragma: no cover
-        return
-
-
-def _serve_dir(path: Path):
-    handler = lambda *args, **kwargs: _SilentHandler(*args, directory=str(path), **kwargs)
-    httpd = socketserver.TCPServer(("127.0.0.1", 0), handler)
-    thread = threading.Thread(target=httpd.serve_forever, daemon=True)
-    thread.start()
-    return httpd, thread, httpd.server_address[1]
+def _make_png(width: int = 256, height: int = 256) -> bytes:
+    img = Image.frombytes("RGB", (width, height), os.urandom(width * height * 3))
+    out = BytesIO()
+    img.save(out, format="PNG")
+    return out.getvalue()
 
 
 def test_small_payload_roundtrip(tmp_path: Path) -> None:
@@ -42,9 +35,9 @@ def test_small_payload_roundtrip(tmp_path: Path) -> None:
     assert out.read_bytes() == src.read_bytes()
 
 
-def test_large_payload_uses_lossy_fallback(tmp_path: Path) -> None:
-    src = tmp_path / "large.bin"
-    src.write_bytes(os.urandom(20000))
+def test_large_payload_uses_image_lossy_fallback(tmp_path: Path) -> None:
+    src = tmp_path / "large.png"
+    src.write_bytes(_make_png(320, 240))
 
     packed = tmp_path / "large.amc"
     res = compress_to_anymeans(src, packed)
@@ -55,25 +48,17 @@ def test_large_payload_uses_lossy_fallback(tmp_path: Path) -> None:
     dec = decompress_from_anymeans(packed, out)
     assert dec["status"] == "ok"
     assert dec["mode"] == "lossy"
-    assert len(out.read_bytes()) == len(src.read_bytes())
+    with Image.open(out) as img:
+        assert img.format == "JPEG"
+        assert img.size[0] <= 96 and img.size[1] <= 96
 
     with pytest.raises(CodecError):
-        compress_to_anymeans(src, packed, source_url="https://example.com/input.bin")
+        compress_to_anymeans(src, packed, source_url="https://example.com/input.png")
 
 
-def test_urlref_roundtrip_from_local_http(tmp_path: Path) -> None:
-    src = tmp_path / "image.bin"
-    src.write_bytes((b"A" * 5000) + (b"B" * 7000))
-
-    httpd, thread, port = _serve_dir(tmp_path)
-    try:
-        url = f"http://127.0.0.1:{port}/{src.name}"
-        packed = tmp_path / "remote.amc"
-        with pytest.raises(CodecError):
-            compress_url_to_anymeans(url, packed)
-    finally:
-        httpd.shutdown()
-        thread.join(timeout=2)
+def test_compress_url_rejected() -> None:
+    with pytest.raises(CodecError):
+        compress_url_to_anymeans("http://127.0.0.1:9999/nope.bin", Path("/tmp/noop.amc"))
 
 
 def test_decode_rejects_urlref_mode(tmp_path: Path) -> None:
