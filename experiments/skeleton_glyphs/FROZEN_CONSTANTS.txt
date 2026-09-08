@@ -1,0 +1,52 @@
+# Frozen before measurement. Do not retune after seeing held-out.
+
+seed: 20260908
+width: 32
+height: 32
+packed_bytes: 128
+bit_order: row-major, MSB first
+n_glyphs: 24
+fit: 00-15
+held_out: 16-23
+
+# Reconstruction
+skeleton: Zhang-Suen thinning
+radius: 1
+dilation: Chebyshev square (structuring element of Chebyshev radius 1)
+chain_code_bits: 3
+chain_codes: 0=E, 1=NE, 2=N, 3=NW, 4=W, 5=SW, 6=S, 7=SE
+# x increases right, y increases down
+
+# Legal representations (keep the smaller exact payload per glyph; tie -> skel bitmap)
+# 1. packed skeleton bitmap + XOR
+# 2. stroke list (pixel-disjoint 8-connected chain codes) + XOR
+
+# Payload
+magic: SG
+version: 1
+header_len: 8
+dimensions_stored: no
+# dimensions known to the shared decoder, same rule as the packed-bits baseline
+header: magic[2] version[1] flags[1] desc_len_u16le[2] corr_len_u16le[2]
+flags:
+  bit0 repr (0=skeleton bitmap, 1=stroke list)
+  bits1-2 radius (0-3), frozen 1
+  bit3 description zlib
+  bit4 correction zlib
+  bit5 correction format (0=packed mask, 1=uint16 count + x,y bytes)
+  bit6 has correction
+  bit7 reserved 0
+zlib_level: 9
+zlib_rule: use zlib only if strictly smaller than the raw section
+correction_codec: smaller of packed 128-byte XOR mask and coord list, each raw or zlib-9
+empty_xor: omit correction stream (corr_len=0)
+
+# Stop rule
+# correction_bytes >= bytes_saved_vs_packed, where
+# bytes_saved_vs_packed = packed_bits - (payload_bytes - correction_bytes)
+# equivalent to payload_bytes >= packed_bits
+# evaluated on held-out sum. If yes, representation_stops and do not retune.
+
+# JPEG XL baseline
+cjxl_command: cjxl INPUT -d 0 -e 9 --quiet OUTPUT.jxl
+djxl_command: djxl INPUT.jxl OUTPUT.pgm

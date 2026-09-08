@@ -1,0 +1,17 @@
+status: clean
+modules:
+- encode.py (encoder entry)
+- __future__ (imported by encode.py)
+- struct (imported by encode.py)
+- zlib (imported by encode.py)
+- raster.py (local import from encode.py)
+- __future__ (imported by raster.py)
+- decode.py (local import from encode.py)
+- __future__ (imported by decode.py)
+- struct (imported by decode.py)
+- zlib (imported by decode.py)
+- pathlib (imported by encode.py)
+notes:
+- encode.py does not import generator and does not contain seed 20260908
+- encode(raster_bytes_128, width=32, height=32) reads only the committed raster
+- local imports followed from encode.py: decode.py, raster.py
