@@ -1,0 +1,70 @@
+checker does_not_read results.json
+jpegxl_effort 9
+decoder_file raster.py 4410
+decoder_file codec.py 14423
+shared_decoder_bytes 18833
+family N seed 20260908
+image N 0 fit src_sha256 08f70a268e410cf88e7f13920bb2b34d1534ac0d64ca8d873c82ed40dc824802 program_bytes 44 exact 1 png_bytes 435 jxl_e9_bytes 168
+image N 1 fit src_sha256 16c74600c0e7dbfb83c7272537aa5ca0fb45f25b27390946328db907399b045a program_bytes 69 exact 1 png_bytes 367 jxl_e9_bytes 135
+image N 2 fit src_sha256 7358f8d6a25c5d0ee6fd5daed02e6fe534be8af0e1a870ce8072d2701740b39f program_bytes 62 exact 1 png_bytes 530 jxl_e9_bytes 190
+image N 3 fit src_sha256 bc1d83138f9982843364e6bfc0e664fb5f460cd4821761120e0f648fe9568f94 program_bytes 35 exact 1 png_bytes 334 jxl_e9_bytes 109
+image N 4 fit src_sha256 7883130d10b660802cc9fedd928a64374bce42cb4564f38f50b518220c0f4437 program_bytes 24 exact 1 png_bytes 164 jxl_e9_bytes 51
+image N 5 fit src_sha256 248b092523e0cd7610ca9cbf88bad15373d653f1b03b3ab0e6ef5ff2385c22a9 program_bytes 51 exact 1 png_bytes 276 jxl_e9_bytes 95
+image N 6 fit src_sha256 77de7a54128c5ebab090d1c12c73dd2559f66840ac88b6cd478bd036e7719701 program_bytes 44 exact 1 png_bytes 416 jxl_e9_bytes 128
+image N 7 fit src_sha256 de34d18632f52c063d6c109f40998e1b6364104bddd0b99a3cfa38345f8fe214 program_bytes 69 exact 1 png_bytes 433 jxl_e9_bytes 176
+image N 8 fit src_sha256 1b1e080dfb0dd234e64c6685f3e1cbfc86c73d503f4547d1f387ae76e0d6d612 program_bytes 46 exact 1 png_bytes 388 jxl_e9_bytes 142
+image N 9 fit src_sha256 1ec7a9e8e7ba2dc9c681f78ef136f36ce12721c89f1ffb248e0a61fd7c88f873 program_bytes 37 exact 1 png_bytes 358 jxl_e9_bytes 131
+image N 10 fit src_sha256 1416faf966f58ebbcdb104973c8f9abe83eb91563ce201729b645330b4d2ab08 program_bytes 60 exact 1 png_bytes 356 jxl_e9_bytes 137
+image N 11 fit src_sha256 d549dadf9872cd80228569d7f817a28f702bc5919bd49437bb89f2f4600b2e4d program_bytes 51 exact 1 png_bytes 327 jxl_e9_bytes 126
+image N 12 fit src_sha256 b3cadcaaf379cf29f9bb24b74a1ef28abf06864a29ebec8d402b5d214672534a program_bytes 24 exact 1 png_bytes 205 jxl_e9_bytes 72
+image N 13 fit src_sha256 7a7d6b2c57f9f2e1b5c4277b3f5d1f2a1041d138614c35cde9ff42b83687b6ed program_bytes 69 exact 1 png_bytes 304 jxl_e9_bytes 112
+image N 14 fit src_sha256 1afcc4f676223c19f6e5553601e5921009bf9f6ef94ab6c55b46092b53f042aa program_bytes 46 exact 1 png_bytes 365 jxl_e9_bytes 138
+image N 15 fit src_sha256 ba2ec01e2d9fc1680a7f4b4e93ca2cc7991ea1743a9f3ae2b5648069ef6c73a7 program_bytes 73 exact 1 png_bytes 519 jxl_e9_bytes 224
+image N 16 heldout src_sha256 ba2eb46b3cf536ae7ce138b9c475e477d4bd2f9e5d004f80124091b5638e019a program_bytes 64 exact 1 png_bytes 384 jxl_e9_bytes 149
+image N 17 heldout src_sha256 9dda70196796799ae0266fa6b529366d6b048255c5548a957e6294eb4a3a7c15 program_bytes 33 exact 1 png_bytes 263 jxl_e9_bytes 91
+image N 18 heldout src_sha256 5a00b2e39a7aa51a7ac7977443ec9cae871b11ef61338e0f1a14a37756056ec8 program_bytes 24 exact 1 png_bytes 166 jxl_e9_bytes 45
+image N 19 heldout src_sha256 276a73e4b2aabfdbf8d892ea65c214d98bea190ae37c66964779b39f8836d83c program_bytes 53 exact 1 png_bytes 361 jxl_e9_bytes 131
+image N 20 heldout src_sha256 3352e557afe70ab4d2c31bbffe5bcb735d7436d32778b7f2bb23064b7770f9e2 program_bytes 44 exact 1 png_bytes 455 jxl_e9_bytes 153
+image N 21 heldout src_sha256 efc8ce1cdacf432fb461cdcc68e286977d3337c324f7693b45ad6f4b51e8e6d8 program_bytes 71 exact 1 png_bytes 432 jxl_e9_bytes 169
+image N 22 heldout src_sha256 9333a1a5ebfdc709073e275a786d97ade1803f3de0e95ff05df4327f18ae79e8 program_bytes 42 exact 1 png_bytes 362 jxl_e9_bytes 136
+image N 23 heldout src_sha256 9a3c27e8472582a5f10bae12682b79ad3171e5b6428beaa4c6039b9f6b5c995c program_bytes 33 exact 1 png_bytes 191 jxl_e9_bytes 64
+heldout_table N program 364 png 2614 jxl_e9 938 exact 8/8 program_missing 0
+family O seed 20260908
+image O 0 fit src_sha256 cee373dfc6ef6f9bd48712604e7ae705d4e98d4c46db9737ca4f1f7ce93361b9 program_bytes missing exact 0 png_bytes 326 jxl_e9_bytes 106
+image O 1 fit src_sha256 05da3b331f418f722d0b23622c81b736f55c1ff3b01eb1c61959da2ab21277e0 program_bytes missing exact 0 png_bytes 407 jxl_e9_bytes 127
+image O 2 fit src_sha256 3b3da678b4496eae690953a707ba9ad62ff12990ca548532d7ce03124ee5e42d program_bytes missing exact 0 png_bytes 539 jxl_e9_bytes 176
+image O 3 fit src_sha256 bf8943713cf17973744d3aa70e118793cbebc91f9e359f29e5cb222025f8c45b program_bytes 26 exact 1 png_bytes 308 jxl_e9_bytes 89
+image O 4 fit src_sha256 604d99dcb36563ec7a56e3af9df38c6207885a24ec3d3ffbc6987e03c8e0b748 program_bytes missing exact 0 png_bytes 310 jxl_e9_bytes 113
+image O 5 fit src_sha256 c1d0bf27451c7e859ae838d9f19eb57148ba6f422b8c61ceababf61aa0936088 program_bytes 26 exact 1 png_bytes 350 jxl_e9_bytes 100
+image O 6 fit src_sha256 071e82e72bc28a0780557af92d05152612a84860371763e07c989eaae1714c6d program_bytes 33 exact 1 png_bytes 269 jxl_e9_bytes 97
+image O 7 fit src_sha256 099796832c8a37ecbdabf8f67cc8b95d57dc3e7b2e51db1949c7cb3284ca4910 program_bytes missing exact 0 png_bytes 567 jxl_e9_bytes 200
+image O 8 fit src_sha256 03bfa01a5968ca1ce131bf06ef181af1a363ce018b8c6e8804c6659718c9df38 program_bytes missing exact 0 png_bytes 340 jxl_e9_bytes 122
+image O 9 fit src_sha256 ac6adfbfbf2e97284ce99eb74de9a472c532f6cc81abfdad2638011e20f68042 program_bytes 44 exact 1 png_bytes 319 jxl_e9_bytes 122
+image O 10 fit src_sha256 79f46c4e94d8569fd3fe1986b80c5f725fea6d7edead40acccbc2ce9ce42b3e5 program_bytes missing exact 0 png_bytes 338 jxl_e9_bytes 118
+image O 11 fit src_sha256 2d60719ab40e04692ffad6840ee1d060574216ed93579c807a15ecb890d079d5 program_bytes missing exact 0 png_bytes 417 jxl_e9_bytes 133
+image O 12 fit src_sha256 0bb5dcf5044307afccbd2df7adc02c694a25294344637c05667294127fbdb42e program_bytes missing exact 0 png_bytes 531 jxl_e9_bytes 197
+image O 13 fit src_sha256 a0231f5f556454ea87639ce5f3b08c91525b80b9625c5ae58ed6f09aaea97af8 program_bytes 15 exact 1 png_bytes 137 jxl_e9_bytes 40
+image O 14 fit src_sha256 ff68c46833c66d0d2b2c840ebaec5e049f39fe393a4c9f906452714093591dec program_bytes missing exact 0 png_bytes 403 jxl_e9_bytes 143
+image O 15 fit src_sha256 de5e865a64c828e0bb13e8e0dbf6d4318a0f27114421fe29145eb03cf3645fa3 program_bytes 24 exact 1 png_bytes 166 jxl_e9_bytes 50
+image O 16 heldout src_sha256 39a2ded2089b2b64328558f0933b0a0831b31c43bf981144f678b070facadc88 program_bytes missing exact 0 png_bytes 309 jxl_e9_bytes 120
+image O 17 heldout src_sha256 9780948cbc8a6a47ed8f5f94c234c364137c81ef9a33dd4b48984c4749d29216 program_bytes missing exact 0 png_bytes 414 jxl_e9_bytes 151
+image O 18 heldout src_sha256 f9eca3827dc766994d17730c8c648faccdbb2621888768614b9cde3aff7c7f04 program_bytes missing exact 0 png_bytes 173 jxl_e9_bytes 51
+image O 19 heldout src_sha256 fcc255ebaa9a7ffad96cf7269575892c12563892168eb38b281a1b689e1fc43e program_bytes 15 exact 1 png_bytes 139 jxl_e9_bytes 38
+image O 20 heldout src_sha256 cd83e0c3bc8415f6db9ce21867ca7484a82b2a2e784e1c358dda99558831f6d0 program_bytes missing exact 0 png_bytes 466 jxl_e9_bytes 168
+image O 21 heldout src_sha256 c325fda3dbda2d24ed050fb571de06c6eea95f61f689eab2b1d2f49d771d4c92 program_bytes missing exact 0 png_bytes 348 jxl_e9_bytes 114
+image O 22 heldout src_sha256 b53a4ee076354503462dda5737ae591752e7708eb23cb4ca8ef641c740f7db20 program_bytes missing exact 0 png_bytes 281 jxl_e9_bytes 99
+image O 23 heldout src_sha256 27ae3573f02fb399544c91511cfe36cd91b9dd8b55ed635027ac80e39db0cf68 program_bytes 24 exact 1 png_bytes 164 jxl_e9_bytes 50
+heldout_table O program 39 png 2294 jxl_e9 791 exact 2/8 program_missing 6
+compare family_n_heldout_program_bytes measured 364 published 364
+compare family_n_heldout_png_bytes measured 2614 published 2614
+compare family_n_heldout_jxl_bytes measured 938 published 938
+compare family_n_heldout_exact measured 8 published 8
+compare family_n_heldout_program_missing measured 0 published 0
+compare family_o_heldout_program_bytes measured 39 published 39
+compare family_o_heldout_png_bytes measured 2294 published 2294
+compare family_o_heldout_jxl_bytes measured 791 published 791
+compare family_o_heldout_exact measured 2 published 2
+compare family_o_heldout_program_missing measured 6 published 6
+advance_bar pass
+published_advance_bar pass
+PASS
