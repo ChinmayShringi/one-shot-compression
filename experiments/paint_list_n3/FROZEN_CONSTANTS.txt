@@ -1,0 +1,9 @@
+Copied from experiments/paint_list_n2/FROZEN_CONSTANTS.txt
+before Family N3 held-out images were generated. Not swept. Not retuned.
+Copied before held-out generation. Recorded here first, then fixtures were written.
+Source chain: experiments/paint_list/codec.py at e1af093fe560908b2a9a8c9939de4436462ea57e
+via experiments/paint_list_n2 at b59041517f5756bb0950f9d1441760b72249fc52.
+ELLIPSE_MARGIN=4
+TRI_LO=-2
+TRI_HI=6
+LINE_RADIUS=8
