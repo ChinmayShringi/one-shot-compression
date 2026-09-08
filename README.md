@@ -1,5 +1,7 @@
 # The 1KB Image Challenge
 
+> **Status: Work in progress research.** This repository contains experimental image compression and generative reconstruction code. Results are preliminary, may change, and require independent validation. The goals below are research targets, not guarantees of achieved performance. This is not a production-ready codec.
+
 ## Problem Statement
 
 Given an arbitrary natural image (e.g. `img.png`, ~2.7 MB, 1920x1832 RGB), produce a self-contained artifact of **at most 1024 bytes** from which the image can be reconstructed with acceptable fidelity — and, ideally, losslessly.
@@ -129,3 +131,11 @@ This repo is a sandbox of attempts, not a finished product. Notable files:
 - What is the minimum per-image payload for tier-2 reconstruction with a fixed ~10 MB decoder?
 - Can a text-conditioned diffusion prior plus a ≤ 1024-byte layout/color embedding reach tier-3 on natural images?
 - Is there a principled way to bound the "fairness" of a shared prior (e.g. the prior's description length under a universal code)?
+
+## License
+
+Copyright (c) 2026 Chinmay Shringi.
+
+Unless otherwise noted, the original code and documentation in this repository are licensed under the GNU General Public License, version 3 only (`GPL-3.0-only`). See [LICENSE](LICENSE) for the full terms. This software is provided without warranty.
+
+Third-party code, model weights, datasets, and images remain subject to their respective licenses and rights; this license does not relicense those materials.
