@@ -1,0 +1,1966 @@
+{
+  "advance_bar": {
+    "family_o_finding": "A raster does not determine paint order.",
+    "n_heldout_exact": 8,
+    "n_heldout_jxl_bytes": 938,
+    "n_heldout_png_bytes": 2614,
+    "n_heldout_program_bytes": 364,
+    "o_heldout_exact": 2,
+    "o_heldout_jxl_bytes": 791,
+    "o_heldout_png_bytes": 2294,
+    "o_heldout_program_bytes": 39,
+    "pass": true,
+    "rule": "Family N exact on every held-out image AND Family N held-out program bytes strictly smaller than JPEG XL effort 9 on those same 8. Equality is fail. No residual."
+  },
+  "aggregates": {
+    "N": {
+      "fit": {
+        "JPEG_XL": {
+          "all_exact": true,
+          "decode_s": 0.163757963995522,
+          "encode_s": 0.2677750469993043,
+          "exact_count": 16,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 16,
+          "payload_bytes": 2134
+        },
+        "PNG": {
+          "all_exact": true,
+          "decode_s": 0.030085516002145596,
+          "encode_s": 0.21324396800264367,
+          "exact_count": 16,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 16,
+          "payload_bytes": 5777
+        },
+        "program": {
+          "all_exact": true,
+          "decode_s": 0.015989533998435945,
+          "encode_s": 2.46443519100103,
+          "exact_count": 16,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 16,
+          "payload_bytes": 804
+        }
+      },
+      "heldout": {
+        "JPEG_XL": {
+          "all_exact": true,
+          "decode_s": 0.09344436600258632,
+          "encode_s": 0.1361432279991277,
+          "exact_count": 8,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 8,
+          "payload_bytes": 938
+        },
+        "PNG": {
+          "all_exact": true,
+          "decode_s": 0.0161454680001043,
+          "encode_s": 0.11257511699841416,
+          "exact_count": 8,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 8,
+          "payload_bytes": 2614
+        },
+        "program": {
+          "all_exact": true,
+          "decode_s": 0.006608106999919983,
+          "encode_s": 0.8434084880027513,
+          "exact_count": 8,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 8,
+          "payload_bytes": 364
+        }
+      }
+    },
+    "O": {
+      "fit": {
+        "JPEG_XL": {
+          "all_exact": true,
+          "decode_s": 0.1814816769983736,
+          "encode_s": 0.2855456849974871,
+          "exact_count": 16,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 16,
+          "payload_bytes": 1933
+        },
+        "PNG": {
+          "all_exact": true,
+          "decode_s": 0.029689516997677856,
+          "encode_s": 0.21755084200049168,
+          "exact_count": 16,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 16,
+          "payload_bytes": 5727
+        },
+        "program": {
+          "all_exact": false,
+          "decode_s": 0.00376924699958181,
+          "encode_s": 0.15542161499979557,
+          "exact_count": 6,
+          "mismatch_pixels": 0,
+          "missing": 10,
+          "n": 16,
+          "payload_bytes": 168
+        }
+      },
+      "heldout": {
+        "JPEG_XL": {
+          "all_exact": true,
+          "decode_s": 0.0816040880017681,
+          "encode_s": 0.14157116900059918,
+          "exact_count": 8,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 8,
+          "payload_bytes": 791
+        },
+        "PNG": {
+          "all_exact": true,
+          "decode_s": 0.01626381400092214,
+          "encode_s": 0.10876149899922893,
+          "exact_count": 8,
+          "mismatch_pixels": 0,
+          "missing": 0,
+          "n": 8,
+          "payload_bytes": 2294
+        },
+        "program": {
+          "all_exact": false,
+          "decode_s": 0.0006471599990618415,
+          "encode_s": 0.01808320899908722,
+          "exact_count": 2,
+          "mismatch_pixels": 0,
+          "missing": 6,
+          "n": 8,
+          "payload_bytes": 39
+        }
+      }
+    }
+  },
+  "checker_command": "python3 experiments/paint_list/check_published.py",
+  "command": "python3 experiments/paint_list/run_experiment.py",
+  "experiment": "paint-list-no-correction",
+  "failures": [],
+  "families": {
+    "N": [
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009636983999371296,
+          "encode_s": 0.02067356100087636,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 168
+        },
+        "PNG": {
+          "decode_s": 0.001560525999593665,
+          "encode_s": 0.012982743999600643,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 435
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 0,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "08f70a268e410cf88e7f13920bb2b34d1534ac0d64ca8d873c82ed40dc824802",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0011838970003736904,
+          "encode_s": 0.10549220299981243,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 44,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010137887999007944,
+          "encode_s": 0.015247196999553125,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 135
+        },
+        "PNG": {
+          "decode_s": 0.002024069000981399,
+          "encode_s": 0.013004680000449298,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 367
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 1,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "16c74600c0e7dbfb83c7272537aa5ca0fb45f25b27390946328db907399b045a",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0006966099990677321,
+          "encode_s": 0.009773172001587227,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 69,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009922981000272557,
+          "encode_s": 0.0167966589997377,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 190
+        },
+        "PNG": {
+          "decode_s": 0.001998912000999553,
+          "encode_s": 0.013181651000195416,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 530
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 2,
+        "n_palette_generator": 6,
+        "n_shapes_generator": 5,
+        "pixel_sha256": "7358f8d6a25c5d0ee6fd5daed02e6fe534be8af0e1a870ce8072d2701740b39f",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0019278990002931096,
+          "encode_s": 0.11063076100072067,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 62,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009784335999938776,
+          "encode_s": 0.01602020599966636,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 109
+        },
+        "PNG": {
+          "decode_s": 0.001908079999338952,
+          "encode_s": 0.013409249999313033,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 334
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 3,
+        "n_palette_generator": 3,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "bc1d83138f9982843364e6bfc0e664fb5f460cd4821761120e0f648fe9568f94",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.001536802001282922,
+          "encode_s": 0.02170572399882076,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 35,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009223360999385477,
+          "encode_s": 0.016359887998987688,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 51
+        },
+        "PNG": {
+          "decode_s": 0.00167232000057993,
+          "encode_s": 0.01276267600042047,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 164
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 4,
+        "n_palette_generator": 2,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "7883130d10b660802cc9fedd928a64374bce42cb4564f38f50b518220c0f4437",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0002582649995019892,
+          "encode_s": 0.010780694999994012,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 24,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010485426000741427,
+          "encode_s": 0.01592853600050148,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 95
+        },
+        "PNG": {
+          "decode_s": 0.0019127069990645396,
+          "encode_s": 0.013192625001465785,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 276
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 5,
+        "n_palette_generator": 5,
+        "n_shapes_generator": 4,
+        "pixel_sha256": "248b092523e0cd7610ca9cbf88bad15373d653f1b03b3ab0e6ef5ff2385c22a9",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0004608229992300039,
+          "encode_s": 0.009088406000955729,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 51,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009367384998768102,
+          "encode_s": 0.02010206900013145,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 128
+        },
+        "PNG": {
+          "decode_s": 0.00208774699967762,
+          "encode_s": 0.012688773000263609,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 416
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 6,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "77de7a54128c5ebab090d1c12c73dd2559f66840ac88b6cd478bd036e7719701",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.001380812000206788,
+          "encode_s": 0.07988670899976569,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 44,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010661509000783553,
+          "encode_s": 0.017176909001136664,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 176
+        },
+        "PNG": {
+          "decode_s": 0.001983211001061136,
+          "encode_s": 0.014001220999489306,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 433
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 7,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "de34d18632f52c063d6c109f40998e1b6364104bddd0b99a3cfa38345f8fe214",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.001106166999306879,
+          "encode_s": 0.011378883000361384,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 69,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010614789000101155,
+          "encode_s": 0.015925556999718538,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 142
+        },
+        "PNG": {
+          "decode_s": 0.0017490699992777081,
+          "encode_s": 0.013141863000782905,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 388
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 8,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "1b1e080dfb0dd234e64c6685f3e1cbfc86c73d503f4547d1f387ae76e0d6d612",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0011996820012427634,
+          "encode_s": 0.16741788599938445,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 46,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.01104893599949719,
+          "encode_s": 0.016013059999750112,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 131
+        },
+        "PNG": {
+          "decode_s": 0.001870250000138185,
+          "encode_s": 0.013052719999905094,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 358
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 9,
+        "n_palette_generator": 3,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "1ec7a9e8e7ba2dc9c681f78ef136f36ce12721c89f1ffb248e0a61fd7c88f873",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0008982379986264277,
+          "encode_s": 1.1577129029992648,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 37,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.00967707899872039,
+          "encode_s": 0.01610905800043838,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 137
+        },
+        "PNG": {
+          "decode_s": 0.0017412460001651198,
+          "encode_s": 0.014903414001310011,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 356
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 10,
+        "n_palette_generator": 6,
+        "n_shapes_generator": 5,
+        "pixel_sha256": "1416faf966f58ebbcdb104973c8f9abe83eb91563ce201729b645330b4d2ab08",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0010954579993267544,
+          "encode_s": 0.010235858999294578,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 60,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009130673999607097,
+          "encode_s": 0.015118560000701109,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 126
+        },
+        "PNG": {
+          "decode_s": 0.0019331690000399249,
+          "encode_s": 0.013273456999741029,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 327
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 11,
+        "n_palette_generator": 5,
+        "n_shapes_generator": 4,
+        "pixel_sha256": "d549dadf9872cd80228569d7f817a28f702bc5919bd49437bb89f2f4600b2e4d",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0006698729994241148,
+          "encode_s": 0.010844488000657293,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 51,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009327465999376727,
+          "encode_s": 0.015627696999217733,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 72
+        },
+        "PNG": {
+          "decode_s": 0.0018115740003850078,
+          "encode_s": 0.013096677999783424,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 205
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 12,
+        "n_palette_generator": 2,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "b3cadcaaf379cf29f9bb24b74a1ef28abf06864a29ebec8d402b5d214672534a",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0005441739995148964,
+          "encode_s": 0.011664268000458833,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 24,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010465183999258443,
+          "encode_s": 0.016034059999583405,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 112
+        },
+        "PNG": {
+          "decode_s": 0.002010111000345205,
+          "encode_s": 0.013724794000154361,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 304
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 13,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "7a7d6b2c57f9f2e1b5c4277b3f5d1f2a1041d138614c35cde9ff42b83687b6ed",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0004214190012135077,
+          "encode_s": 0.009373349999805214,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 69,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009881211000902113,
+          "encode_s": 0.017541064000397455,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 138
+        },
+        "PNG": {
+          "decode_s": 0.0018324419997952646,
+          "encode_s": 0.01329001900012372,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 365
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 14,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "1afcc4f676223c19f6e5553601e5921009bf9f6ef94ab6c55b46092b53f042aa",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0015617970002494985,
+          "encode_s": 0.6931447799997841,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 46,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.014392754999789759,
+          "encode_s": 0.01710096599890676,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 224
+        },
+        "PNG": {
+          "decode_s": 0.0019900820007023867,
+          "encode_s": 0.013537402999645565,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 519
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 15,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "ba2ec01e2d9fc1680a7f4b4e93ca2cc7991ea1743a9f3ae2b5648069ef6c73a7",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.001047617999574868,
+          "encode_s": 0.04530510400036292,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 73,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.01408099900072557,
+          "encode_s": 0.01639710600102262,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 149
+        },
+        "PNG": {
+          "decode_s": 0.0018473420004738728,
+          "encode_s": 0.012937139999849023,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 384
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 16,
+        "n_palette_generator": 6,
+        "n_shapes_generator": 5,
+        "pixel_sha256": "ba2eb46b3cf536ae7ce138b9c475e477d4bd2f9e5d004f80124091b5638e019a",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0008543989988538669,
+          "encode_s": 0.03507242200066685,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 64,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010933940000541043,
+          "encode_s": 0.017495254000095883,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 91
+        },
+        "PNG": {
+          "decode_s": 0.0017832060002547223,
+          "encode_s": 0.012835560000894475,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 263
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 17,
+        "n_palette_generator": 3,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "9dda70196796799ae0266fa6b529366d6b048255c5548a957e6294eb4a3a7c15",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0004660320009861607,
+          "encode_s": 0.00987709699984407,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 33,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009998420000556507,
+          "encode_s": 0.01593282499925408,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 45
+        },
+        "PNG": {
+          "decode_s": 0.0023934500004543224,
+          "encode_s": 0.016702918999726535,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 166
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 18,
+        "n_palette_generator": 2,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "5a00b2e39a7aa51a7ac7977443ec9cae871b11ef61338e0f1a14a37756056ec8",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.00048743300067144446,
+          "encode_s": 0.014765328000066802,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 24,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009670040000855806,
+          "encode_s": 0.016214070999922114,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 131
+        },
+        "PNG": {
+          "decode_s": 0.0021869749998586485,
+          "encode_s": 0.01785654400009662,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 361
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 19,
+        "n_palette_generator": 5,
+        "n_shapes_generator": 4,
+        "pixel_sha256": "276a73e4b2aabfdbf8d892ea65c214d98bea190ae37c66964779b39f8836d83c",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0012427180008671712,
+          "encode_s": 0.031334545001300285,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 53,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.014107704999332782,
+          "encode_s": 0.017471425999247003,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 153
+        },
+        "PNG": {
+          "decode_s": 0.0021644899989041733,
+          "encode_s": 0.013490611998349777,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 455
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 20,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "3352e557afe70ab4d2c31bbffe5bcb735d7436d32778b7f2bb23064b7770f9e2",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0013069260003248928,
+          "encode_s": 0.7122002579999389,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 44,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009862584000075003,
+          "encode_s": 0.01852985100049409,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 169
+        },
+        "PNG": {
+          "decode_s": 0.0022085679993324447,
+          "encode_s": 0.01319513199996436,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 432
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 21,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "efc8ce1cdacf432fb461cdcc68e286977d3337c324f7693b45ad6f4b51e8e6d8",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0008859609988576267,
+          "encode_s": 0.019424709998929757,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 71,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.014223735999621567,
+          "encode_s": 0.01628229899870348,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 136
+        },
+        "PNG": {
+          "decode_s": 0.0019208290013921214,
+          "encode_s": 0.01318652000009024,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 362
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 22,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "9333a1a5ebfdc709073e275a786d97ade1803f3de0e95ff05df4327f18ae79e8",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0010574669995548902,
+          "encode_s": 0.010556618000919116,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 42,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010566942000878043,
+          "encode_s": 0.017820396000388428,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 64
+        },
+        "PNG": {
+          "decode_s": 0.0016406079994339962,
+          "encode_s": 0.01237068999944313,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 191
+        },
+        "family": "N",
+        "height": 64,
+        "image_index": 23,
+        "n_palette_generator": 3,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "9a3c27e8472582a5f10bae12682b79ad3171e5b6428beaa4c6039b9f6b5c995c",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0003071709998039296,
+          "encode_s": 0.010177510001085466,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 33,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      }
+    ],
+    "O": [
+      {
+        "JPEG_XL": {
+          "decode_s": 0.013559409999288619,
+          "encode_s": 0.01575233099902107,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 106
+        },
+        "PNG": {
+          "decode_s": 0.0019019069986825343,
+          "encode_s": 0.012653718998990371,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 326
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 0,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "cee373dfc6ef6f9bd48712604e7ae705d4e98d4c46db9737ca4f1f7ce93361b9",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.2778822750005929,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.013007010998990154,
+          "encode_s": 0.01726477999909548,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 127
+        },
+        "PNG": {
+          "decode_s": 0.0019276269995316397,
+          "encode_s": 0.013387577999310452,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 407
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 1,
+        "n_palette_generator": 3,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "05da3b331f418f722d0b23622c81b736f55c1ff3b01eb1c61959da2ab21277e0",
+        "program": {
+          "decode_s": null,
+          "encode_s": 6.1878570720000425,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.01306740899963188,
+          "encode_s": 0.01789388900033373,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 176
+        },
+        "PNG": {
+          "decode_s": 0.0020524739993561525,
+          "encode_s": 0.013548708000598708,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 539
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 2,
+        "n_palette_generator": 5,
+        "n_shapes_generator": 4,
+        "pixel_sha256": "3b3da678b4496eae690953a707ba9ad62ff12990ca548532d7ce03124ee5e42d",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.48483822500020324,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.011740455998733523,
+          "encode_s": 0.016740377999667544,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 89
+        },
+        "PNG": {
+          "decode_s": 0.0016268060007860186,
+          "encode_s": 0.013818350000292412,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 308
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 3,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "bf8943713cf17973744d3aa70e118793cbebc91f9e359f29e5cb222025f8c45b",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0006139350007288158,
+          "encode_s": 0.05230244499944092,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 26,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.012247071999809123,
+          "encode_s": 0.018760846000077436,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 113
+        },
+        "PNG": {
+          "decode_s": 0.001839841999753844,
+          "encode_s": 0.012983994998648996,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 310
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 4,
+        "n_palette_generator": 6,
+        "n_shapes_generator": 4,
+        "pixel_sha256": "604d99dcb36563ec7a56e3af9df38c6207885a24ec3d3ffbc6987e03c8e0b748",
+        "program": {
+          "decode_s": null,
+          "encode_s": 2.2826155410002684,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.011011472999598482,
+          "encode_s": 0.01691447099983634,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 100
+        },
+        "PNG": {
+          "decode_s": 0.001692051999270916,
+          "encode_s": 0.013814576999720884,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 350
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 5,
+        "n_palette_generator": 5,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "c1d0bf27451c7e859ae838d9f19eb57148ba6f422b8c61ceababf61aa0936088",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.001150536998466123,
+          "encode_s": 0.03106856200065522,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 26,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.012478706999900169,
+          "encode_s": 0.018089286999384058,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 97
+        },
+        "PNG": {
+          "decode_s": 0.0018794349998643156,
+          "encode_s": 0.012709864000498783,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 269
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 6,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "071e82e72bc28a0780557af92d05152612a84860371763e07c989eaae1714c6d",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0007412830000248505,
+          "encode_s": 0.010993492000125116,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 33,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.011411738001697813,
+          "encode_s": 0.020586157999787247,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 200
+        },
+        "PNG": {
+          "decode_s": 0.0019489269998302916,
+          "encode_s": 0.013244894000308705,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 567
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 7,
+        "n_palette_generator": 6,
+        "n_shapes_generator": 5,
+        "pixel_sha256": "099796832c8a37ecbdabf8f67cc8b95d57dc3e7b2e51db1949c7cb3284ca4910",
+        "program": {
+          "decode_s": null,
+          "encode_s": 3.935123780998765,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009954922001270461,
+          "encode_s": 0.016907021999941207,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 122
+        },
+        "PNG": {
+          "decode_s": 0.0019303490007587243,
+          "encode_s": 0.012965160998646752,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 340
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 8,
+        "n_palette_generator": 5,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "03bfa01a5968ca1ce131bf06ef181af1a363ce018b8c6e8804c6659718c9df38",
+        "program": {
+          "decode_s": null,
+          "encode_s": 1.3728332919999957,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010002790000726236,
+          "encode_s": 0.016915170001084334,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 122
+        },
+        "PNG": {
+          "decode_s": 0.0018399399996269494,
+          "encode_s": 0.014652638001280138,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 319
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 9,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "ac6adfbfbf2e97284ce99eb74de9a472c532f6cc81abfdad2638011e20f68042",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.0006119059999036836,
+          "encode_s": 0.04769939300058468,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 44,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009360195999761345,
+          "encode_s": 0.017370261000905884,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 118
+        },
+        "PNG": {
+          "decode_s": 0.0018360530011705123,
+          "encode_s": 0.017651897000177996,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 338
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 10,
+        "n_palette_generator": 6,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "79f46c4e94d8569fd3fe1986b80c5f725fea6d7edead40acccbc2ce9ce42b3e5",
+        "program": {
+          "decode_s": null,
+          "encode_s": 2.9842112000005727,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009800615000131074,
+          "encode_s": 0.017463520000092103,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 133
+        },
+        "PNG": {
+          "decode_s": 0.0020736010010296013,
+          "encode_s": 0.013490123001247412,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 417
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 11,
+        "n_palette_generator": 8,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "2d60719ab40e04692ffad6840ee1d060574216ed93579c807a15ecb890d079d5",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.5586385890001111,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.011112693999166368,
+          "encode_s": 0.021374238000134937,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 197
+        },
+        "PNG": {
+          "decode_s": 0.0018570169995655306,
+          "encode_s": 0.013376446999245672,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 531
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 12,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "0bb5dcf5044307afccbd2df7adc02c694a25294344637c05667294127fbdb42e",
+        "program": {
+          "decode_s": null,
+          "encode_s": 1.2782408780003607,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009730472000228474,
+          "encode_s": 0.020311815998866223,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 40
+        },
+        "PNG": {
+          "decode_s": 0.0016506749998370651,
+          "encode_s": 0.013601462000224274,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 137
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 13,
+        "n_palette_generator": 2,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "a0231f5f556454ea87639ce5f3b08c91525b80b9625c5ae58ed6f09aaea97af8",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.000419447000240325,
+          "encode_s": 0.0018882360000134213,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 15,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.011605939998844406,
+          "encode_s": 0.017517938000310096,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 143
+        },
+        "PNG": {
+          "decode_s": 0.001993199999560602,
+          "encode_s": 0.012922341000376036,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 403
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 14,
+        "n_palette_generator": 8,
+        "n_shapes_generator": 4,
+        "pixel_sha256": "ff68c46833c66d0d2b2c840ebaec5e049f39fe393a4c9f906452714093591dec",
+        "program": {
+          "decode_s": null,
+          "encode_s": 9.612468915998761,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.011390772000595462,
+          "encode_s": 0.015683579998949426,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 50
+        },
+        "PNG": {
+          "decode_s": 0.0016396119990531588,
+          "encode_s": 0.012729088000924094,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 166
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 15,
+        "n_palette_generator": 7,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "de5e865a64c828e0bb13e8e0dbf6d4318a0f27114421fe29145eb03cf3645fa3",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.00023213900021801237,
+          "encode_s": 0.011469486998976208,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 24,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "fit",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.01016584100034379,
+          "encode_s": 0.017215489999216516,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 120
+        },
+        "PNG": {
+          "decode_s": 0.001805846999559435,
+          "encode_s": 0.01263907099928474,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 309
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 16,
+        "n_palette_generator": 2,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "39a2ded2089b2b64328558f0933b0a0831b31c43bf981144f678b070facadc88",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.19775588800075639,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.00967073799984064,
+          "encode_s": 0.01818166600060067,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 151
+        },
+        "PNG": {
+          "decode_s": 0.0018139139992854325,
+          "encode_s": 0.012832460000936408,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 414
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 17,
+        "n_palette_generator": 8,
+        "n_shapes_generator": 5,
+        "pixel_sha256": "9780948cbc8a6a47ed8f5f94c234c364137c81ef9a33dd4b48984c4749d29216",
+        "program": {
+          "decode_s": null,
+          "encode_s": 9.208102673001122,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009501264001301024,
+          "encode_s": 0.01572985799975868,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 51
+        },
+        "PNG": {
+          "decode_s": 0.0015928980010357918,
+          "encode_s": 0.012520284000856918,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 173
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 18,
+        "n_palette_generator": 3,
+        "n_shapes_generator": 2,
+        "pixel_sha256": "f9eca3827dc766994d17730c8c648faccdbb2621888768614b9cde3aff7c7f04",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.2824024700003065,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.010670054000001983,
+          "encode_s": 0.02189911100140307,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 38
+        },
+        "PNG": {
+          "decode_s": 0.0016273500004899688,
+          "encode_s": 0.012840626000979682,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 139
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 19,
+        "n_palette_generator": 2,
+        "n_shapes_generator": 5,
+        "pixel_sha256": "fcc255ebaa9a7ffad96cf7269575892c12563892168eb38b281a1b689e1fc43e",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.00023049199990055058,
+          "encode_s": 0.0018205039996246342,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 15,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.009748251999553759,
+          "encode_s": 0.017838359999586828,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 168
+        },
+        "PNG": {
+          "decode_s": 0.0019923809995816555,
+          "encode_s": 0.01404351099881751,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 466
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 20,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "cd83e0c3bc8415f6db9ce21867ca7484a82b2a2e784e1c358dda99558831f6d0",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.4454117419991235,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.01204063600016525,
+          "encode_s": 0.01702328600003966,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 114
+        },
+        "PNG": {
+          "decode_s": 0.002773105999949621,
+          "encode_s": 0.012980972998775542,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 348
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 21,
+        "n_palette_generator": 3,
+        "n_shapes_generator": 3,
+        "pixel_sha256": "c325fda3dbda2d24ed050fb571de06c6eea95f61f689eab2b1d2f49d771d4c92",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.9182426879997365,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.00974428300105501,
+          "encode_s": 0.017247151999981725,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 99
+        },
+        "PNG": {
+          "decode_s": 0.0019674150007631397,
+          "encode_s": 0.013038437000432168,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 281
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 22,
+        "n_palette_generator": 2,
+        "n_shapes_generator": 6,
+        "pixel_sha256": "b53a4ee076354503462dda5737ae591752e7708eb23cb4ca8ef641c740f7db20",
+        "program": {
+          "decode_s": null,
+          "encode_s": 0.08781565800018143,
+          "error": "no exact paint list",
+          "exact": false,
+          "mismatch_count": null,
+          "payload_bytes": null,
+          "stored": false
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      },
+      {
+        "JPEG_XL": {
+          "decode_s": 0.01006301999950665,
+          "encode_s": 0.016436246000012034,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 50
+        },
+        "PNG": {
+          "decode_s": 0.0026909030002570944,
+          "encode_s": 0.017866136999145965,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 164
+        },
+        "family": "O",
+        "height": 64,
+        "image_index": 23,
+        "n_palette_generator": 4,
+        "n_shapes_generator": 1,
+        "pixel_sha256": "27ae3573f02fb399544c91511cfe36cd91b9dd8b55ed635027ac80e39db0cf68",
+        "program": {
+          "correction_bytes": 0,
+          "decode_s": 0.00041666799916129094,
+          "encode_s": 0.016262704999462585,
+          "error": null,
+          "exact": true,
+          "mismatch_count": 0,
+          "payload_bytes": 24,
+          "stored": true
+        },
+        "raw_rgb_bytes": 12288,
+        "split": "heldout",
+        "width": 64
+      }
+    ]
+  },
+  "family_n_seed": 20260908,
+  "family_n_seed_note": "Family N uses seed 20260908. Rejection sampling consumes the image RNG until each shape is disjoint or the attempt budget ends. The seed was not changed.",
+  "family_o_seed": 20260908,
+  "family_o_source": "experiments/shape_family/generator.py at d287e17a10bdb5c2613fc72bc789a029d3f35a56",
+  "finished_et": "2026-09-08 16:06:45 EDT",
+  "finished_utc": "2026-09-08T20:06:45.227936+00:00",
+  "fit_indices": "0-15",
+  "height": 64,
+  "heldout_indices": "16-23",
+  "n_images": 24,
+  "shared_decoder": {
+    "bytes": 18833,
+    "excluded": [
+      "experiments/paint_list/generator_n.py",
+      "experiments/paint_list/generator_o.py",
+      "experiments/paint_list/baselines.py",
+      "experiments/paint_list/run_experiment.py",
+      "experiments/paint_list/check_published.py",
+      "experiments/paint_list/results.json",
+      "experiments/paint_list/SUMMARY.md"
+    ],
+    "included": [
+      {
+        "bytes": 4410,
+        "path": "experiments/paint_list/raster.py"
+      },
+      {
+        "bytes": 14423,
+        "path": "experiments/paint_list/codec.py"
+      }
+    ],
+    "note": "Shared decoder size is the byte size of raster.py and codec.py. It is not added to per-image payloads. Decode redraws the stored program and does not need the generators."
+  },
+  "started_et": "2026-09-08 16:05:59 EDT",
+  "started_utc": "2026-09-08T20:05:59.223277+00:00",
+  "versions": {
+    "cjxl": "cjxl v0.11.2 [AVX2,SSE4,SSE2]\nCopyright (c) the JPEG XL Project",
+    "djxl": "djxl v0.11.2 [AVX2,SSE4,SSE2]\nCopyright (c) the JPEG XL Project",
+    "jpegxl_effort": 9,
+    "jpegxl_install_failure_class": null,
+    "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "python_full": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "zlib": "1.3.1"
+  },
+  "wall_clock_s": 46.00466096499986,
+  "width": 64
+}
