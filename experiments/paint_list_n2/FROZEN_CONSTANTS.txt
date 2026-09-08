@@ -1,0 +1,6 @@
+Copied from experiments/paint_list/codec.py at e1af093fe560908b2a9a8c9939de4436462ea57e
+before Family N2 held-out images were generated. Not swept on held-out seeds.
+ELLIPSE_MARGIN=4
+TRI_LO=-2
+TRI_HI=6
+LINE_RADIUS=8

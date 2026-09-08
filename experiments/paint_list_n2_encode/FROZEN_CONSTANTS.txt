@@ -1,0 +1,6 @@
+Copied from experiments/paint_list_n2/FROZEN_CONSTANTS.txt.
+Not changed. Not swept.
+ELLIPSE_MARGIN=4
+TRI_LO=-2
+TRI_HI=6
+LINE_RADIUS=8

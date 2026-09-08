@@ -1,0 +1,30 @@
+{
+  "family": "N2",
+  "seed": 20260909,
+  "seed_changed": false,
+  "fit_indices": "0-15",
+  "heldout_indices": "16-23",
+  "frozen_fitter_constants": {
+    "source": "experiments/paint_list/codec.py",
+    "commit": "e1af093fe560908b2a9a8c9939de4436462ea57e",
+    "ELLIPSE_MARGIN": 4,
+    "TRI_LO": -2,
+    "TRI_HI": 6,
+    "LINE_RADIUS": 8
+  },
+  "heldout_exact": 8,
+  "heldout_program_bytes": 374,
+  "heldout_png_bytes": 2278,
+  "heldout_jxl_e9_bytes": 743,
+  "heldout_reuse_images": 8,
+  "fit_exact": 16,
+  "fit_program_bytes": 818,
+  "fit_png_bytes": 5443,
+  "fit_jxl_e9_bytes": 1966,
+  "fit_reuse_images": 6,
+  "checker_hash_match": true,
+  "advance": "pass",
+  "shared_decoder_bytes": 21989,
+  "jpegxl_effort": 9,
+  "note": "Checker does not read this file."
+}
