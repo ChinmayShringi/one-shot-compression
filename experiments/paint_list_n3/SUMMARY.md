@@ -4,25 +4,23 @@ Same canvas as N2: 64x64 RGB, at most 6 filled shapes, palette size at most 8, n
 
 Seed 20260910. Not changed. Images 0-15 fit, 16-23 held-out. Seed and split frozen before payload size measurement.
 
-Frozen fitter constants copied from experiments/paint_list_n2/FROZEN_CONSTANTS.txt before held-out generation. Not retuned.
+Frozen fitter constants copied from experiments/paint_list_n2/FROZEN_CONSTANTS.txt before held-out generation. Not retuned. Not widened.
 
 ELLIPSE_MARGIN=4
 TRI_LO=-2
 TRI_HI=6
 LINE_RADIUS=8
 
-Held-out images 16, 18, 20, and 22 each contain two distinct same-color rectangles that share a pixel edge and remain two shapes in the true program. Corner-only contact does not count. A naive 4-connected color mask merges each pair. The encoder splits those merged masks from raster bytes only.
+Shared-edge count is computed from the committed pixel rasters. A shared edge is two distinct same-color shapes whose pixels touch along a 4-connected edge. Corner-only contact does not count. The checker does not open experiments/paint_list_n3/sidecar.
 
-Sidecar split: experiments/paint_list_n3/sidecar/shared_edges.json is written by the generator at fixture-write time. encode.py does not import the generator and does not open that file. The checker reads it only to report the held-out shared-edge count.
+Held-out images 18, 20, and 22 still recover as two filled rectangles that share a pixel edge. Those pairs are counted from pixels. Image 16 was regenerated under seed 20260910 as a same-color rectangle and ellipse that share a 4-edge. encode.py accepts only that raster and returns no program. No residual was added. Constants were not retuned. The fitter was not widened.
+
+The paint list stops at disconnected or two-rectangle masks.
+
+Held-out exact: not 8/8. The non-rectangle shared-edge pair is not counted, because it is not recovered from the raster.
 
 Import graph: clean. encode.py does not import generator_n3 or any generator. Recovery imports raster.py only.
 
-Held-out exact: 8/8. Redraw sha256 matches committed fixture sha256.
-
-Held-out program payload 410 bytes. PNG 2732. JPEG XL effort 9: 929. Program is smaller than JPEG XL effort 9.
-
-Held-out shared-edge images: 4.
-
-Advance: pass. Representation stops: no.
+Advance: fail. Representation stops: yes.
 
 Checker: python3 experiments/paint_list_n3/check_n3.py

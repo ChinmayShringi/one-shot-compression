@@ -7,6 +7,13 @@ The encoder path is encode.encode(px, width, height). It accepts only raster
 bytes. encode.py does not import generator_n3, does not read the seed, and
 does not open the sidecar.
 
-The checker reads the sidecar only to report how many held-out images have
-two same-color shapes that share an edge. Hash match uses decode of the
-committed programs against the committed fixture bytes.
+The checker does not open experiments/paint_list_n3/sidecar. Shared-edge
+count is computed from the committed pixel rasters: two distinct same-color
+shapes whose painted pixels touch along a 4-connected edge. Corner-only
+contact does not count. Hash match uses decode of the committed programs
+against the committed fixture bytes.
+
+Image 16 was regenerated under seed 20260910 as a rectangle and ellipse that
+share a 4-edge. The existing fitter does not recover that raster. Frozen
+constants were not retuned. The paint list stops at disconnected or
+two-rectangle masks.

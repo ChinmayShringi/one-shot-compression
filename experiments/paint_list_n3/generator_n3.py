@@ -39,8 +39,9 @@ SAME_COLOR_GAP = 2
 SEED_NOTE = (
     "Family N3 uses seed 20260910. The seed was not changed. "
     "Images 0-15 fit, 16-23 held-out. Frozen before payload size measurement. "
-    "Held-out even indices 16, 18, 20, 22 place two same-color rectangles that "
-    "share a pixel edge and remain two shapes in the true program. "
+    "Held-out image 16 places a same-color rectangle and ellipse that share a "
+    "pixel edge. Held-out images 18, 20, 22 place two same-color rectangles that "
+    "share a pixel edge. Those pairs remain two shapes in the true program. "
     "Corner-only contact does not count. No overlap."
 )
 
@@ -305,9 +306,60 @@ def shared_edge_pairs(scene):
     return pairs
 
 
+# Recorded with seed 20260910. Not a fitter-constant sweep.
+# Image 16 is the held-out non-rectangle shared-edge pair.
+NONRECT_HELD_OUT = 16
+NONRECT_RECT = (2, 10, 18, 40)
+NONRECT_ELLIPSE = (19, 8, 42, 44)
+
+
+def generate_nonrect_heldout(image_index, seed=MASTER_SEED):
+    """Held-out rect + ellipse that share a 4-edge. Seed recorded. No fitter retune."""
+    if image_index != NONRECT_HELD_OUT:
+        raise ValueError("nonrect held-out index")
+    rng = image_rng(image_index, seed)
+    palette = _unique_palette(rng, 2)
+    geom_rect = NONRECT_RECT
+    geom_ellipse = NONRECT_ELLIPSE
+    ra = set(shape_pixels(TYPE_RECT, geom_rect))
+    ea = set(shape_pixels(TYPE_ELLIPSE, geom_ellipse))
+    if not ra or not ea or (ra & ea) or not pixels_share_edge(ra, ea):
+        raise RuntimeError("recorded nonrect pair does not share a 4-edge")
+    scene = {
+        "family": FAMILY,
+        "settings_id": SETTINGS_ID,
+        "seed": seed,
+        "seed_note": SEED_NOTE,
+        "image_index": image_index,
+        "width": WIDTH,
+        "height": HEIGHT,
+        "max_shapes": MAX_SHAPES,
+        "max_palette": MAX_PALETTE,
+        "place_attempts": PLACE_ATTEMPTS,
+        "same_color_gap": SAME_COLOR_GAP,
+        "shared_edge_required": True,
+        "used_fallback_pair": False,
+        "nonrect_shared_edge": True,
+        "palette": palette,
+        "shapes": [
+            (TYPE_RECT, 1, geom_rect),
+            (TYPE_ELLIPSE, 1, geom_ellipse),
+        ],
+    }
+    pairs = shared_edge_pairs(scene)
+    if len(pairs) < 1:
+        raise RuntimeError("held-out image missing shared edge")
+    types = [scene["shapes"][i][0] for i, _j, _c in pairs] + [scene["shapes"][j][0] for i, j, _c in pairs]
+    if all(t == TYPE_RECT for t in types):
+        raise RuntimeError("held-out shared-edge pair is two rectangles")
+    return scene
+
+
 def generate_scene(image_index, seed=MASTER_SEED):
     if image_index < 0 or image_index >= N_IMAGES:
         raise ValueError("image_index out of range")
+    if image_index == NONRECT_HELD_OUT:
+        return generate_nonrect_heldout(image_index, seed)
     rng = image_rng(image_index, seed)
     shared_required = require_shared_edge(image_index)
     if shared_required:
