@@ -1,0 +1,283 @@
+{
+  "family": "N3",
+  "seed": 20260910,
+  "seed_changed": false,
+  "split": "0-15 fit, 16-23 held-out",
+  "frozen_before_size_measurement": true,
+  "frozen_constants_copied_before_heldout_generation": true,
+  "frozen_constants": {
+    "ELLIPSE_MARGIN": 4,
+    "TRI_LO": -2,
+    "TRI_HI": 6,
+    "LINE_RADIUS": 8
+  },
+  "encoder_must_not_read_this_file": true,
+  "note": "Written by the generator at fixture-write time. encode.py must not open this file. Corner-only contact is not counted as a shared edge.",
+  "heldout_shared_edge_images": 4,
+  "images": [
+    {
+      "index": 0,
+      "split": "fit",
+      "n_shapes": 3,
+      "n_colors": 4,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 1,
+      "split": "fit",
+      "n_shapes": 2,
+      "n_colors": 3,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 2,
+      "split": "fit",
+      "n_shapes": 5,
+      "n_colors": 6,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 3,
+      "split": "fit",
+      "n_shapes": 4,
+      "n_colors": 5,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 4,
+      "split": "fit",
+      "n_shapes": 1,
+      "n_colors": 2,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 5,
+      "split": "fit",
+      "n_shapes": 6,
+      "n_colors": 7,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 6,
+      "split": "fit",
+      "n_shapes": 3,
+      "n_colors": 4,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 7,
+      "split": "fit",
+      "n_shapes": 6,
+      "n_colors": 7,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 8,
+      "split": "fit",
+      "n_shapes": 5,
+      "n_colors": 6,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 9,
+      "split": "fit",
+      "n_shapes": 2,
+      "n_colors": 3,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 10,
+      "split": "fit",
+      "n_shapes": 1,
+      "n_colors": 2,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 11,
+      "split": "fit",
+      "n_shapes": 4,
+      "n_colors": 5,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 12,
+      "split": "fit",
+      "n_shapes": 3,
+      "n_colors": 4,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 13,
+      "split": "fit",
+      "n_shapes": 6,
+      "n_colors": 7,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 14,
+      "split": "fit",
+      "n_shapes": 3,
+      "n_colors": 4,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 15,
+      "split": "fit",
+      "n_shapes": 2,
+      "n_colors": 3,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 16,
+      "split": "heldout",
+      "n_shapes": 2,
+      "n_colors": 2,
+      "shared_edge_required": true,
+      "has_shared_edge": true,
+      "shared_edge_pairs": 1,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": true
+    },
+    {
+      "index": 17,
+      "split": "heldout",
+      "n_shapes": 4,
+      "n_colors": 5,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 18,
+      "split": "heldout",
+      "n_shapes": 4,
+      "n_colors": 4,
+      "shared_edge_required": true,
+      "has_shared_edge": true,
+      "shared_edge_pairs": 1,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": true
+    },
+    {
+      "index": 19,
+      "split": "heldout",
+      "n_shapes": 6,
+      "n_colors": 7,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 20,
+      "split": "heldout",
+      "n_shapes": 5,
+      "n_colors": 5,
+      "shared_edge_required": true,
+      "has_shared_edge": true,
+      "shared_edge_pairs": 1,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": true
+    },
+    {
+      "index": 21,
+      "split": "heldout",
+      "n_shapes": 6,
+      "n_colors": 7,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    },
+    {
+      "index": 22,
+      "split": "heldout",
+      "n_shapes": 3,
+      "n_colors": 3,
+      "shared_edge_required": true,
+      "has_shared_edge": true,
+      "shared_edge_pairs": 1,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": true
+    },
+    {
+      "index": 23,
+      "split": "heldout",
+      "n_shapes": 2,
+      "n_colors": 3,
+      "shared_edge_required": false,
+      "has_shared_edge": false,
+      "shared_edge_pairs": 0,
+      "used_fallback_pair": false,
+      "true_program_keeps_pair_as_two_shapes": false
+    }
+  ]
+}
